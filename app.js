@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
   let data = [];
   try {
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       // executablePath: executablePath,
     });
     const page = await browser.newPage();
