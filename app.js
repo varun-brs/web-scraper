@@ -1,8 +1,9 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 const app = express();
 const path = require("path");
 const port = 5000;
+const executablePath = "/usr/bin/google-chrome-stable";
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -14,7 +15,10 @@ app.get("/", async (req, res) => {
 
   let data = [];
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      executablePath: executablePath,
+    });
     const page = await browser.newPage();
 
     await page.goto(amazonURL, { waitUntil: "domcontentloaded" });
