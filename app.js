@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 const app = express();
 const path = require("path");
 const port = 5000;
-// const executablePath = "/usr/bin/google-chrome-stable";
+const executablePath = "/opt/google/chrome/google-chrome";
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -16,8 +16,8 @@ app.get("/", async (req, res) => {
   let data = [];
   try {
     const browser = await puppeteer.launch({
-      headless: false,
-      // executablePath: executablePath,
+      headless: true,
+      executablePath: executablePath,
     });
     const page = await browser.newPage();
 
