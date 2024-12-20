@@ -1,9 +1,9 @@
 const express = require("express");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const app = express();
 const path = require("path");
 const port = 5000;
-const executablePath = "/usr/bin/google-chrome-stable";
+// const executablePath = "/usr/bin/google-chrome-stable";
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: true,
-      executablePath: executablePath,
+      // executablePath: executablePath,
     });
     const page = await browser.newPage();
 
